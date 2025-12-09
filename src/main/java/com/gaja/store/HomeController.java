@@ -1,13 +1,21 @@
 package com.gaja.store;
 
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class HomeController {
+
+
+    @Value("${spring.application.name}")
+    private String appName;
+
     @RequestMapping("/")
     public String index(){
+
+        System.out.println("App name : "+appName);
         String viewName=getViewname();
         return viewName;
 
@@ -15,7 +23,7 @@ public class HomeController {
     }
 
     private String getViewname(){
-        return "index";
+        return "index.html";
     }
 
 }
